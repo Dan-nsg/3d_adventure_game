@@ -35,6 +35,15 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""a1c0790f-2da8-478f-9d68-df3fb8c0c1e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0cbf2a8b-ec8b-4a82-aa56-317ab857483c"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
+        m_Gameplay_ChangeGun = m_Gameplay.FindAction("ChangeGun", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -117,11 +138,13 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Shoot;
+    private readonly InputAction m_Gameplay_ChangeGun;
     public struct GameplayActions
     {
         private @Inputs m_Wrapper;
         public GameplayActions(@Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
+        public InputAction @ChangeGun => m_Wrapper.m_Gameplay_ChangeGun;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -134,6 +157,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
+                @ChangeGun.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChangeGun;
+                @ChangeGun.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChangeGun;
+                @ChangeGun.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChangeGun;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -141,6 +167,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @ChangeGun.started += instance.OnChangeGun;
+                @ChangeGun.performed += instance.OnChangeGun;
+                @ChangeGun.canceled += instance.OnChangeGun;
             }
         }
     }
@@ -148,5 +177,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnShoot(InputAction.CallbackContext context);
+        void OnChangeGun(InputAction.CallbackContext context);
     }
 }

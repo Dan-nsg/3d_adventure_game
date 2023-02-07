@@ -2677,7 +2677,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522685368}
-  m_LocalRotation: {x: 0.16883373, y: -0.000000018961158, z: 0.0000000032479084, w: 0.9856446}
+  m_LocalRotation: {x: 0.16883373, y: 0.000000018961158, z: -0.0000000032479084, w: 0.9856446}
   m_LocalPosition: {x: 413.64, y: 2.1100001, z: 31.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2960,7 +2960,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -6683,8 +6683,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e09736ed50b9545add988cc0865112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunBase: {fileID: 7663610550048589686, guid: 92c0671ae9c9c034981fc483e56e2c61, type: 3}
   gunPosition: {fileID: 741168448}
+  gunBases:
+  - {fileID: 2087254083224802622, guid: 3f7d1f71fbdfbdf4d95562eccba6fa10, type: 3}
+  - {fileID: 6271109832856695905, guid: 585141ed5cc515f47af7da8cac4a7253, type: 3}
+  - {fileID: 7663610550048589686, guid: 92c0671ae9c9c034981fc483e56e2c61, type: 3}
 --- !u!1001 &1216502771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8548,7 +8551,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500100153}
-  m_LocalRotation: {x: 0.16883373, y: -0.000000018961158, z: 0.0000000032479084, w: 0.9856446}
+  m_LocalRotation: {x: 0.16883373, y: 0.000000018961158, z: -0.0000000032479084, w: 0.9856446}
   m_LocalPosition: {x: 413.64, y: 2.1100001, z: 31.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
