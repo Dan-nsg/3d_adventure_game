@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5370239790511683758}
   - component: {fileID: 2415653571330827517}
-  - component: {fileID: -6762367986065465560}
+  - component: {fileID: 461123414741228945}
   m_Layer: 0
   m_Name: PFB_Projectile
   m_TagString: Untagged
@@ -154,7 +154,7 @@ MonoBehaviour:
   timeToDestroy: 2
   damageAmount: 1
   speed: 50
---- !u!54 &-6762367986065465560
+--- !u!54 &461123414741228945
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,8 +175,8 @@ Rigidbody:
     serializedVersion: 2
     m_Bits: 0
   m_ImplicitCom: 1
-  m_ImplicitTensor: 0
-  m_UseGravity: 0
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126

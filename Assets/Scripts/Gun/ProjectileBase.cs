@@ -22,8 +22,11 @@ public class ProjectileBase : MonoBehaviour
     {
         var damageable = collision.transform.GetComponent<IDamageable>();
 
-        if(damageable != null) damageable.Damage(damageAmount);
+        if(collision.transform.tag !=  gameObject.tag)
+        {
+            if(damageable != null) damageable.Damage(damageAmount);
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
