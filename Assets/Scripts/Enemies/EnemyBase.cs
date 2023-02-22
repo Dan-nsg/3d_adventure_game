@@ -12,6 +12,8 @@ namespace Enemy
         public FlashColor flashColor;
         public new ParticleSystem particleSystem;
         public float startLife = 10f;
+        public float rotationSpeed = 5f;
+        public bool lookAtPlayer = false;
 
 
         [Header("Start Animation")]
@@ -22,10 +24,16 @@ namespace Enemy
          [Header("Privates")]
         [SerializeField]private AnimationBase _animationBase;
         [SerializeField] private float _currentLife;
+        private Player _player;
 
         private void Awake() 
         {
             Init();
+        }
+
+        private void Start() 
+        {
+            _player = GameObject.FindObjectOfType<Player>();
         }
 
         protected virtual void ResetLife()
@@ -49,6 +57,7 @@ namespace Enemy
         protected virtual void OnKill()
         {
             if(collider != null) collider.enabled = false;
+            Destroy(gameObject, 3f);
             PlayAnimationByTrigger(AnimationType.DEATH);
         }
 
@@ -79,15 +88,6 @@ namespace Enemy
         }
         #endregion
 
-        //debugger
-        private void Update() 
-        {
-            if(Input.GetKeyDown(KeyCode.T))
-            {
-                OnDamage(5f);
-            }
-        }
-
         public void Damage(float damage)
         {
             Debug.Log("Damage");
@@ -98,6 +98,27 @@ namespace Enemy
         {
             OnDamage(damage);
             transform.DOMove(transform.position - dir, .1f);
+        }
+
+        private void OnCollisionEnter(Collision collision) 
+        {
+            Player p = collision.transform.GetComponent<Player>();
+
+            if(p != null)
+            {
+                p.Damage(1);
+            }    
+        }
+
+
+        public virtual void Update() 
+        {
+            if(lookAtPlayer)
+            {
+                Vector3 direction = (_player.transform.position - transform.position).normalized;
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            }
         }
 
     }

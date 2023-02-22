@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4366442756908600660}
   - component: {fileID: 6271109832856695905}
   m_Layer: 0
-  m_Name: PFB_GunBase
+  m_Name: PFB_EnemyGun01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

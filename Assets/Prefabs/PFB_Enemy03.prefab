@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4349926274555346635}
   - component: {fileID: 7088449091752381679}
   - component: {fileID: 7088449091752381678}
+  - component: {fileID: -3214216361147248342}
   m_Layer: 0
   m_Name: PFB_Enemy03
   m_TagString: Enemy
@@ -33,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 7088449092820156165}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4349926274555346635
 BoxCollider:
@@ -99,6 +100,33 @@ MonoBehaviour:
     trigger: Attack
   - animationType: 4
     trigger: Death
+--- !u!54 &-3214216361147248342
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7088449091752381677}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &7088449092820156164
 GameObject:
   m_ObjectHideFlags: 0

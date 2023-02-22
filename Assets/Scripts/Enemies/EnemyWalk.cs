@@ -13,8 +13,10 @@ namespace Enemy
     public float speed = 1f;
 
     private int _index = 0;
-    private void Update()
+
+        public override void Update()
         {
+            base.Update();
             if(Vector3.Distance(transform.position, waypoints[_index].transform.position) < minDistance)
             {
                 _index++;
@@ -23,9 +25,18 @@ namespace Enemy
                     _index = 0;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, waypoints[_index].transform.position, Time.deltaTime * speed);
-                transform.LookAt(waypoints[_index].transform.position);
             }
+
+            Vector3 targetPosition = waypoints[_index].transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
         }
     }
+
+
+
+
+    
 }
