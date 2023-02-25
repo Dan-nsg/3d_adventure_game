@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -21,16 +21,65 @@ public class Player : MonoBehaviour, IDamageable
     [Header("Flash")]
     public List<FlashColor> flashColors;
 
+
+    private bool _alive = true;
+
+    [Header("Life UI")]
+    public HealthBase healthBase;
+
+    private void Start() 
+    {
+        healthBase = GetComponent<HealthBase>();
+        healthBase.OnKill += OnKill;
+    }
+
     #region LIFE
 
     public void Damage(float damage)
     {
         flashColors.ForEach(i => i.Flash());
+        healthBase.Damage(damage);
     }
 
     public void Damage(float damage, Vector3 dir)
     {
-        Damage(damage);
+        flashColors.ForEach(i => i.Flash());
+
+        if(healthBase != null)
+        {
+            healthBase.Damage(damage);
+        }
+    }
+
+    private void OnKill(HealthBase h)
+    {
+        if(_alive)
+        {
+            _alive = false;
+            animator.SetTrigger("Death");
+            characterController.enabled = false;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if(rb != null)
+            {
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
+
+            Invoke(nameof(Revive), 3f);
+        }
+    }
+
+    private void Revive()
+    {
+        _alive = true;
+        healthBase.ResetLife();
+        animator.SetTrigger("Revive");
+        Respawn();
+        Invoke(nameof(TurnOnColliders), .1f);
+    }
+
+    private void TurnOnColliders()
+    {
+        characterController.enabled = true;
     }
 
     #endregion
@@ -77,5 +126,15 @@ public class Player : MonoBehaviour, IDamageable
 
         animator.SetBool("Run", isWalking);
 
+    }
+
+
+    [NaughtyAttributes.Button]
+    public void Respawn()
+    {
+        if(CheckpointManager.Instance.HasCheckpoint())
+        {
+            transform.position = CheckpointManager.Instance.GetPositionFromLastCheckpoint();
+        }
     }
 }

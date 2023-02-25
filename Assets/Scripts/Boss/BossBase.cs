@@ -32,9 +32,13 @@ namespace Boss
         private StateMachine<BossAction> stateMachine;
         
         private void Awake() 
-        {
+        {   
+            healthBase = GetComponent<HealthBase>();
+            if(healthBase != null)
+            {
+                healthBase.OnKill += OnBossKill;
+            }
             Init();
-            healthBase.OnKill += OnBossKill;
         }
 
         private void Init()
@@ -50,6 +54,11 @@ namespace Boss
 
         private void OnBossKill(HealthBase h)
         {
+            if(healthBase != null)
+            {
+                healthBase.OnKill -= OnBossKill;
+            }
+
             SwitchState(BossAction.DEATH);
         }
 
