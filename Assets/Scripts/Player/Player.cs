@@ -38,12 +38,14 @@ public class Player : MonoBehaviour, IDamageable
     public void Damage(float damage)
     {
         flashColors.ForEach(i => i.Flash());
+        EffectsManager.Instance.ChangeVignette();
         healthBase.Damage(damage);
     }
 
     public void Damage(float damage, Vector3 dir)
     {
         flashColors.ForEach(i => i.Flash());
+        EffectsManager.Instance.ChangeVignette();
 
         if(healthBase != null)
         {

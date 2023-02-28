@@ -9,7 +9,6 @@ public class CheckpointBase : MonoBehaviour
 
 
     private bool _checkpointIsActive = false;
-    private string checkpointKey = "CheckpointKey";
 
     private void OnTriggerEnter(Collider other) 
     {
