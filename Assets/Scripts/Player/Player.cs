@@ -30,7 +30,7 @@ public class Player : Singleton<Player>, IDamageable
     public HealthBase healthBase;
 
     [Space]
-    [SerializeField] private ClothChanger _clothChanger;
+    [SerializeField]private ClothChanger _clothChanger;
 
     private void Start() 
     {
@@ -168,5 +168,18 @@ public class Player : Singleton<Player>, IDamageable
         _clothChanger.ChangeTexture(setup);
         yield return new WaitForSeconds(duration);
         _clothChanger.ResetTexture();
+    }
+
+    public void ChangeJump(float jump, float duration)
+    {
+        StartCoroutine(ChangeSpeedCoroutine(jump, duration));
+    }
+
+    IEnumerator ChangeJumpCoroutine(float jump, float duration)
+    {
+        var defaultJump = jumpSpeed;
+        jumpSpeed = jump;
+        yield return new WaitForSeconds(duration);
+        jumpSpeed = defaultJump;
     }
 }

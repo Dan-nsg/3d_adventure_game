@@ -4,13 +4,15 @@ using UnityEngine;
 
 namespace Cloth
 {
-    public class ClothItemSpeed : ClothItemBase
+    public class ClothItemJump : ClothItemBase
     {
-        public float targetSpeed = 2f;
+        public float jumpSpeed = 30f;
+
         public override void Collect()
         {
             base.Collect();
-            Player.Instance.ChangeSpeed(targetSpeed, duration);
+            Player.Instance.ChangeJump(jumpSpeed, duration);
         }
+
     }
 }
