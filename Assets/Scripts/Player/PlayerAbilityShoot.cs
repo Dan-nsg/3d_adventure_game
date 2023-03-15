@@ -8,6 +8,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     public Transform gunPosition;
 
     private GunBase _currentGun;
+    public FlashColor flashColor;
     private int _currentGunIndex = 0;
     public GunBase[] gunBases;
 
@@ -32,6 +33,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     private void StartShoot()
     {
         _currentGun.StartShoot();
+        flashColor?.Flash();
         ShakeCamera.Instance.Shake();
         Debug.Log("Start Shoot");
     }

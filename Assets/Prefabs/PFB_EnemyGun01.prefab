@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4366442756908600663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 413.65, y: -4.76, z: 48.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4366442757496385291}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4366442756908600659
 MeshFilter:
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b56f55abf909f47bde2e7307efd95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabProjectile: {fileID: 2415653571330827517, guid: 6e93434931aa43c4d8a5de1441e61d6b, type: 3}
+  prefabProjectile: {fileID: 2415653571330827517, guid: da899edfa2291ab4cb967e942728df8a, type: 3}
   positionToShoot: {fileID: 4366442757496385291}
   timeBetweenShoot: 0.3
   speed: 50
