@@ -8,7 +8,7 @@ namespace ImportantScripts.Core.Singleton
     {
         public static T Instance;
 
-        protected void Awake() 
+        protected virtual void Awake() 
         {
             if(Instance == null)
                 Instance = GetComponent<T>();
