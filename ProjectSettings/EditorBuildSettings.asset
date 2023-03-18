@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SCN_Menu.unity
     guid: 054ae88217c36cf4a8dc64049a5ebfad
   - enabled: 1
-    path: Assets/Scenes/SCN_Art_3D.unity
-    guid: 10e5957b4b33c0b4e902e650fcc5edce
-  - enabled: 1
     path: Assets/Scenes/SCN_Art_3D_level02_teste.unity
     guid: 04ea09d76b99df848b2a5c25459fd598
+  - enabled: 1
+    path: Assets/Scenes/SCN_Art_3D.unity
+    guid: 10e5957b4b33c0b4e902e650fcc5edce
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a5adda6392c54164b85ecb7df9fa29ea, type: 2}

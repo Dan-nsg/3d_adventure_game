@@ -7,7 +7,6 @@ using Cloth;
 public class Player : Singleton<Player>, IDamageable
 {
     public Animator animator;
-
     public CharacterController characterController;
     public float speed = 1f;
     public float turnSpeed = 1f;
